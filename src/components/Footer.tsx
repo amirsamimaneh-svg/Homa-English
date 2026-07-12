@@ -30,23 +30,24 @@ const cols = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-line mt-24">
-      <div className="wrap py-16 grid grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-10">
+    <footer className="relative mt-28 border-t border-white/10">
+      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[520px] h-[300px] blob bg-brand-violet/20" />
+      <div className="relative wrap py-16 grid grid-cols-2 md:grid-cols-[1.6fr_1fr_1fr_1fr] gap-10">
         <div>
-          <div className="text-ink-950 mb-4">
+          <div className="text-white mb-4">
             <Logo />
           </div>
-          <p className="text-[14px] text-ink-500 leading-7 max-w-[240px]">
-            پلتفرم مدرن یادگیری زبان انگلیسی — هدفمند، تعاملی و هوشمند.
+          <p className="text-[14px] text-ink-400 leading-7 max-w-[250px]">
+            پلتفرم هوشمند یادگیری زبان انگلیسی — زنده، تعاملی و شخصی‌سازی‌شده برای تو.
           </p>
         </div>
         {cols.map((c) => (
           <div key={c.title}>
-            <div className="text-[13px] font-semibold text-ink-950 mb-4">{c.title}</div>
+            <div className="text-[13px] font-semibold text-white mb-4">{c.title}</div>
             <ul className="space-y-3">
               {c.links.map((l) => (
                 <li key={l.label}>
-                  <Link href={l.href} className="text-[14px] text-ink-500 hover:text-ink-950 transition-colors">
+                  <Link href={l.href} className="text-[14px] text-ink-400 hover:text-white transition-colors">
                     {l.label}
                   </Link>
                 </li>
@@ -55,10 +56,10 @@ export function Footer() {
           </div>
         ))}
       </div>
-      <div className="border-t border-line">
-        <div className="wrap py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[13px] text-ink-400">
+      <div className="relative border-t border-white/10">
+        <div className="wrap py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[13px] text-ink-500">
           <span>© {toFa(1403)} هما. همه حقوق محفوظ است.</span>
-          <span className="latin tracking-wide">Homa English</span>
+          <span className="latin tracking-wide gradient-text font-semibold">Homa English</span>
         </div>
       </div>
     </footer>

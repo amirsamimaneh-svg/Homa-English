@@ -10,25 +10,27 @@ const nav = [
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-line">
-      <div className="wrap flex items-center justify-between h-16">
-        <Link href="/" className="text-ink-950">
-          <Logo />
-        </Link>
-        <nav className="hidden md:flex items-center gap-8 text-[15px] text-ink-700">
-          {nav.map((n) => (
-            <Link key={n.href} href={n.href} className="hover:text-ink-950 transition-colors">
-              {n.label}
+    <header className="fixed top-0 inset-x-0 z-40">
+      <div className="wrap pt-4">
+        <div className="glass-strong rounded-full flex items-center justify-between h-14 pr-5 pl-2.5">
+          <Link href="/" className="text-white">
+            <Logo />
+          </Link>
+          <nav className="hidden md:flex items-center gap-7 text-[14.5px] text-ink-300">
+            {nav.map((n) => (
+              <Link key={n.href} href={n.href} className="hover:text-white transition-colors">
+                {n.label}
+              </Link>
+            ))}
+          </nav>
+          <div className="flex items-center gap-2">
+            <Link href="/login" className="btn-ghost hidden sm:inline-flex !py-2">
+              ورود
             </Link>
-          ))}
-        </nav>
-        <div className="flex items-center gap-2">
-          <Link href="/login" className="btn-ghost hidden sm:inline-flex">
-            ورود
-          </Link>
-          <Link href="/start" className="btn-primary">
-            شروع رایگان
-          </Link>
+            <Link href="/start" className="btn-grad !px-5 !py-2.5 !text-[14px]">
+              شروع رایگان
+            </Link>
+          </div>
         </div>
       </div>
     </header>

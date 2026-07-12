@@ -12,18 +12,17 @@
     -webkit-text-size-adjust: 100%;
   }
   body {
-    background: #ffffff;
-    color: #171717;
+    background: #07070e;
+    color: #f5f5fa;
     font-family: var(--font-vazir);
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
   }
   ::selection {
-    background: #10b981;
+    background: #8b5cf6;
     color: #fff;
   }
-  /* Latin numerals & code render in Inter for a cleaner, modern look */
   .latin {
     font-family: var(--font-inter);
     font-feature-settings: "tnum" 1;
@@ -35,43 +34,100 @@
     @apply max-w-content mx-auto px-6 sm:px-8;
   }
 
-  /* Buttons — minimal, hairline / solid ink / accent */
+  /* Glass surface */
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(14px);
+  }
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(100deg, #a78bfa 0%, #22d3ee 55%, #38bdf8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Buttons */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-all duration-200 cursor-pointer select-none whitespace-nowrap;
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 cursor-pointer select-none whitespace-nowrap;
   }
-  .btn-primary {
-    @apply btn bg-ink-950 text-white px-6 py-3 text-[15px] hover:bg-ink-800;
+  .btn-grad {
+    @apply btn text-white px-7 py-3.5 text-[15px];
+    background: linear-gradient(100deg, #7c3aed, #4f46e5 45%, #06b6d4);
+    background-size: 160% 160%;
+    box-shadow: 0 8px 30px -6px rgba(124, 58, 237, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
-  .btn-accent {
-    @apply btn bg-accent-500 text-white px-6 py-3 text-[15px] hover:bg-accent-600;
+  .btn-grad:hover {
+    background-position: 100% 50%;
+    box-shadow: 0 12px 40px -6px rgba(34, 211, 238, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+  }
+  .btn-glass {
+    @apply btn glass text-ink-50 px-7 py-3.5 text-[15px] hover:bg-white/[0.07];
   }
   .btn-ghost {
-    @apply btn text-ink-700 px-4 py-3 text-[15px] hover:text-ink-950;
-  }
-  .btn-outline {
-    @apply btn bg-white text-ink-900 border border-line px-6 py-3 text-[15px] hover:border-ink-300 hover:bg-surface;
-  }
-  .btn:disabled {
-    @apply opacity-40 cursor-not-allowed;
+    @apply btn text-ink-300 px-4 py-3 text-[15px] hover:text-white;
   }
 
-  /* Cards — flat, hairline border, subtle hover lift */
-  .card {
-    @apply bg-white border border-line rounded-xl;
-  }
-
-  /* Inputs — minimal underline-lite */
-  .field {
-    @apply w-full box-border bg-white border border-line rounded-lg px-4 py-3 text-[15px] outline-none transition-colors placeholder:text-ink-400 focus:border-ink-950;
-  }
-
-  /* Eyebrow label */
-  .eyebrow {
-    @apply latin text-[12px] font-semibold tracking-[0.14em] uppercase text-accent-600;
-  }
-
-  /* Pill */
+  /* Chips / pills */
   .pill {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3 py-1 text-[13px] font-medium text-ink-700;
+    @apply inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-[13px] font-medium text-ink-200;
+  }
+
+  .eyebrow {
+    @apply latin text-[12px] font-semibold tracking-[0.18em] uppercase;
+    background: linear-gradient(100deg, #a78bfa, #22d3ee);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Gradient hairline border card via mask */
+  .card-glow {
+    @apply relative rounded-2xl glass overflow-hidden;
+  }
+  .card-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(140deg, rgba(139, 92, 246, 0.6), rgba(34, 211, 238, 0.15) 40%, transparent 70%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+  }
+  .card-glow:hover::before {
+    opacity: 1;
+  }
+
+  .field {
+    @apply w-full box-border rounded-xl glass px-4 py-3 text-[15px] text-ink-50 outline-none transition-all placeholder:text-ink-500 focus:border-brand-violet/60;
+  }
+}
+
+@layer utilities {
+  /* Soft radial glow blob */
+  .blob {
+    border-radius: 9999px;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+  .grid-fade {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
   }
 }
