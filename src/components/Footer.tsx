@@ -30,8 +30,8 @@ const cols = [
 
 export function Footer() {
   return (
-    <footer className="relative mt-28 border-t border-white/10">
-      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[520px] h-[300px] blob bg-brand-violet/20" />
+    <footer className="relative mt-28 border-t border-white/10 overflow-hidden">
+      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[520px] max-w-full h-[300px] blob bg-brand-violet/20" />
       <div className="relative wrap py-16 grid grid-cols-2 md:grid-cols-[1.6fr_1fr_1fr_1fr] gap-10">
         <div>
           <div className="text-white mb-4">
