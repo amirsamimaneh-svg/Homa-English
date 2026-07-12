@@ -416,6 +416,39 @@ export function pct(done: number, total: number): number {
   return Math.round((done / total) * 100);
 }
 
+/* ---------------- LMS: classes, quiz ---------------- */
+
+export const upcomingClasses = [
+  {
+    time: "۱۸:۰۰",
+    day: "امروز",
+    title: "آیلتس آکادمیک — Writing Task 2",
+    meta: "دکتر شیرین علوی · کلاس زنده",
+    next: true,
+  },
+  {
+    time: "۱۰:۳۰",
+    day: "فردا",
+    title: "ناوبری هوایی — فصل ۵",
+    meta: "کاپیتان فرهاد نوری · کلاس زنده",
+    next: false,
+  },
+];
+
+export interface QuizQuestion {
+  prompt: string;
+  options: string[];
+  correct: number;
+}
+
+export const quiz: QuizQuestion[] = [
+  { prompt: "کدام گزینه معادل صحیح واژه «Reluctant» است؟", options: ["مشتاق", "بی‌میل", "قاطع", "آرام"], correct: 1 },
+  { prompt: "معنی عبارت «to give up» چیست؟", options: ["تسلیم شدن", "بلند شدن", "ادامه دادن", "برگشتن"], correct: 0 },
+  { prompt: "کدام واژه هم‌معنی «Enormous» است؟", options: ["کوچک", "معمولی", "عظیم", "سریع"], correct: 2 },
+  { prompt: "زمان صحیح: «She ___ to school every day.»", options: ["go", "goes", "going", "gone"], correct: 1 },
+  { prompt: "معادل «Frequently» کدام است؟", options: ["به‌ندرت", "هرگز", "اغلب", "دیروز"], correct: 2 },
+];
+
 /* ---------------- Getters (swap these for API calls later) ---------------- */
 
 export function getCourses(track?: Track): Course[] {
