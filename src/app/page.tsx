@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Background } from "@/components/Background";
 import { CourseCard } from "@/components/CourseCard";
 import { HeroPreview } from "@/components/HeroPreview";
 import { Icon } from "@/components/icons";
@@ -11,17 +12,6 @@ const featureIcon: Record<string, React.ReactNode> = {
   sparkle: <Icon.Sparkle width={22} height={22} />,
   chart: <Icon.Chart width={22} height={22} />,
 };
-
-function Background() {
-  return (
-    <div className="fixed inset-0 -z-10 overflow-hidden bg-base">
-      <div className="absolute top-0 inset-x-0 h-[600px] grid-fade" />
-      <div className="absolute -top-32 right-[-10%] w-[560px] h-[560px] blob bg-brand-violet/25 animate-drift" />
-      <div className="absolute top-[10%] left-[-12%] w-[520px] h-[520px] blob bg-brand-cyan/20 animate-drift" style={{ animationDelay: "-6s" }} />
-      <div className="absolute top-[120%] left-1/2 -translate-x-1/2 w-[700px] h-[500px] blob bg-brand-indigo/20" />
-    </div>
-  );
-}
 
 export default function Home() {
   const popular = courses.slice(0, 3);

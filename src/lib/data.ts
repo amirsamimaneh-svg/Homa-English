@@ -157,6 +157,117 @@ export const faqs = [
   },
 ];
 
+export const plans = [
+  {
+    name: "پایه",
+    price: 0,
+    period: "رایگان",
+    tagline: "برای شروع و آشنایی",
+    features: ["آزمون تعیین سطح", "دسترسی به ۳ درس اول هر دوره", "تمرین‌های تعاملی محدود"],
+    cta: "شروع رایگان",
+    highlighted: false,
+  },
+  {
+    name: "حرفه‌ای",
+    price: 490000,
+    period: "ماهانه",
+    tagline: "محبوب‌ترین انتخاب",
+    features: [
+      "دسترسی کامل به همه دوره‌ها",
+      "دستیار هوشمند نامحدود",
+      "بازخورد گفتار و نوشتار",
+      "گزارش پیشرفت هفتگی",
+      "گواهی پایان دوره",
+    ],
+    cta: "شروع اشتراک",
+    highlighted: true,
+  },
+  {
+    name: "سازمانی",
+    price: -1,
+    period: "تماس بگیرید",
+    tagline: "برای تیم‌ها و شرکت‌ها",
+    features: ["همه امکانات حرفه‌ای", "مدیریت تیم و گزارش گروهی", "پشتیبانی اختصاصی", "صورتحساب سازمانی"],
+    cta: "تماس با فروش",
+    highlighted: false,
+  },
+];
+
+export interface BlogPost {
+  slug: string;
+  title: string;
+  category: string;
+  readTime: number;
+  date: string;
+  excerpt: string;
+}
+
+export const blogPosts: BlogPost[] = [
+  {
+    slug: "common-mistakes",
+    title: "۷ اشتباه رایج در مکالمه که باید کنار بگذاری",
+    category: "مکالمه",
+    readTime: 6,
+    date: "۱۲ تیر ۱۴۰۳",
+    excerpt: "اشتباه‌هایی که بیشتر زبان‌آموزان تکرار می‌کنند و راه ساده‌ی رفعشان.",
+  },
+  {
+    slug: "daily-habit",
+    title: "چطور با ۱۵ دقیقه در روز زبان یاد بگیریم",
+    category: "یادگیری",
+    readTime: 4,
+    date: "۵ تیر ۱۴۰۳",
+    excerpt: "قدرت عادت‌های کوچک روزانه در یادگیری پایدار زبان.",
+  },
+  {
+    slug: "ielts-writing",
+    title: "نکات طلایی برای نمره‌ی بهتر رایتینگ آیلتس",
+    category: "آیلتس",
+    readTime: 7,
+    date: "۲۸ خرداد ۱۴۰۳",
+    excerpt: "ساختار پاراگراف، لغات کلیدی و اشتباه‌هایی که نمره را پایین می‌آورند.",
+  },
+  {
+    slug: "ai-learning",
+    title: "هوش مصنوعی چطور یادگیری زبان را سریع‌تر می‌کند؟",
+    category: "یادگیری",
+    readTime: 5,
+    date: "۲۰ خرداد ۱۴۰۳",
+    excerpt: "نگاهی به نقش بازخورد هوشمند و تمرین شخصی‌سازی‌شده.",
+  },
+  {
+    slug: "pronunciation-tips",
+    title: "۵ تمرین ساده برای تلفظ بهتر",
+    category: "تلفظ",
+    readTime: 5,
+    date: "۱۰ خرداد ۱۴۰۳",
+    excerpt: "با این تمرین‌ها لهجه‌ات طبیعی‌تر و شفاف‌تر می‌شود.",
+  },
+  {
+    slug: "vocabulary-memory",
+    title: "چطور لغت‌ها را فراموش نکنیم؟",
+    category: "واژگان",
+    readTime: 6,
+    date: "۲ خرداد ۱۴۰۳",
+    excerpt: "روش تکرار فاصله‌دار و ترفندهای تثبیت واژگان در حافظه.",
+  },
+];
+
+export const blogCategories = ["همه", "مکالمه", "آیلتس", "یادگیری", "تلفظ", "واژگان"];
+
+/** A generic curriculum for the course detail page. */
+export function curriculumFor(course: Course) {
+  return [
+    {
+      title: "بخش ۱ — شروع و پایه",
+      lessons: ["معرفی دوره و اهداف", "ارزیابی اولیه", "مفاهیم کلیدی این سطح"],
+    },
+    { title: "بخش ۲ — مهارت‌های اصلی", lessons: [] },
+    { title: "بخش ۳ — تمرین و کاربرد", lessons: [] },
+    { title: `بخش ۴ — جمع‌بندی و ${course.tag}`, lessons: [] },
+  ];
+}
+
 /* ---- helpers ---- */
 
 const faDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
