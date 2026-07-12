@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-vazir: "Vazirmatn", sans-serif;
+  --font-grotesk: "Space Grotesk", sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    line-height: 1.6;
+    background: #f5f9fc;
+    color: #0f2942;
+    font-family: var(--font-vazir);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: #d98e3b;
+    color: #fff;
+  }
+}
+
+@layer components {
+  /* Numeric / Latin content always renders in Space Grotesk */
+  .num {
+    font-family: var(--font-grotesk);
+  }
+
+  /* Section heading with amber start-border (used across marketing pages) */
+  .section-title {
+    @apply text-2xl font-bold border-s-4 border-amber-500 ps-3.5;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-btn font-semibold transition-colors cursor-pointer select-none;
+  }
+  .btn-primary {
+    @apply btn bg-amber-500 text-white hover:bg-amber-600 px-7 py-3.5 text-base;
+  }
+  .btn-secondary {
+    @apply btn bg-navy-800 text-white hover:bg-navy-700 px-7 py-3.5 text-base;
+  }
+  .btn-outline {
+    @apply btn bg-transparent text-navy-800 border-[1.5px] border-[#C9D6E0] hover:border-navy-800 px-7 py-[13px] text-base;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent text-muted hover:text-navy-800 px-5 py-3.5 text-base;
+  }
+  .btn:disabled {
+    @apply bg-[#E2ECF3] text-faint cursor-not-allowed hover:bg-[#E2ECF3];
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white rounded-card border border-line;
+  }
+  .card-dark {
+    @apply bg-navy-800 rounded-card text-white;
+  }
+
+  /* Inputs */
+  .input {
+    @apply w-full box-border px-4 py-[13px] rounded-btn border-[1.5px] border-line-200 bg-[#F9FBFC] text-[15px] outline-none focus:border-amber-500 transition-colors;
+    font-family: var(--font-vazir);
+  }
+  .input-ltr {
+    @apply input text-right;
+    direction: ltr;
+    font-family: var(--font-grotesk);
+  }
+
+  /* Pills / badges */
+  .tag {
+    @apply inline-flex items-center rounded-pill px-4 py-[7px] text-[13px] font-semibold;
+  }
+  .tag-level {
+    @apply tag bg-navy-100 text-navy-700;
+  }
+  .tag-amber {
+    @apply tag bg-amber-100 text-amber-700;
+  }
+  .tag-success {
+    @apply tag bg-success-bg text-success-text;
+  }
+}
+
+/* Decorative flight-path SVG lives behind dark heroes; keep it non-interactive */
+.flightpath {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
