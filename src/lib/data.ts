@@ -377,6 +377,45 @@ export const faqGroups = [
   },
 ];
 
+/* ---------------- Account / LMS user data ---------------- */
+
+export const currentUser = {
+  name: "آرمان رضایی",
+  phoneMasked: "0912***4567",
+  level: "B2 · متوسط رو به بالا",
+};
+
+export interface Enrollment {
+  title: string;
+  instructor: string;
+  done: number;
+  total: number;
+  status: "active" | "completed";
+}
+
+export const enrollments: Enrollment[] = [
+  { title: "آیلتس آکادمیک فشرده", instructor: "دکتر شیرین علوی", done: 15, total: 24, status: "active" },
+  { title: "اصول ناوبری هوایی", instructor: "کاپیتان فرهاد نوری", done: 9, total: 32, status: "active" },
+];
+
+export interface Invoice {
+  title: string;
+  date: string;
+  amount: number;
+  paid: boolean;
+}
+
+export const invoices: Invoice[] = [
+  { title: "آیلتس آکادمیک فشرده", date: "۲۸ خرداد ۱۴۰۳", amount: 6500000, paid: true },
+  { title: "اصول ناوبری هوایی", date: "۱۰ خرداد ۱۴۰۳", amount: 8900000, paid: true },
+  { title: "مکالمه روزمره انگلیسی", date: "۲ اسفند ۱۴۰۲", amount: 3200000, paid: true },
+];
+
+/** Percent helper for progress bars. */
+export function pct(done: number, total: number): number {
+  return Math.round((done / total) * 100);
+}
+
 /* ---------------- Getters (swap these for API calls later) ---------------- */
 
 export function getCourses(track?: Track): Course[] {
