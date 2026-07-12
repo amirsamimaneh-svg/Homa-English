@@ -28,7 +28,14 @@ const columns = [
   },
 ];
 
-export function Footer() {
+export function Footer({ simple = false }: { simple?: boolean }) {
+  if (simple) {
+    return (
+      <footer className="px-6 md:px-20 py-10 bg-white border-t border-line text-center text-[13px] text-faint">
+        © {toFa(1403)} آموزشگاه هما — تمامی حقوق محفوظ است.
+      </footer>
+    );
+  }
   return (
     <footer className="px-6 md:px-20 pt-14 pb-10 bg-white border-t border-line">
       <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-10 max-w-[1280px] mx-auto mb-10">

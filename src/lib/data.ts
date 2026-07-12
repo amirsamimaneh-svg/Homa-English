@@ -32,6 +32,7 @@ export interface Instructor {
   title: string;
   bio: string;
   credentials: string[];
+  experience: string;
 }
 
 export interface BlogPost {
@@ -172,35 +173,75 @@ export const courses: Course[] = [
 export const instructors: Instructor[] = [
   {
     id: "sara-mohammadi",
-    name: "سارا محمدی",
+    name: "دکتر شیرین علوی",
     track: "language",
-    title: "مدرس ارشد آیلتس",
-    bio: "بیش از ۱۰ سال سابقه تدریس زبان انگلیسی و آمادگی آزمون‌های بین‌المللی با تمرکز بر مهارت رایتینگ و اسپیکینگ.",
+    title: "مدرس ارشد آیلتس، CELTA",
+    bio: "مدرس ارشد آیلتس با مدرک CELTA، ۱۱ سال سابقه تدریس و آماده‌سازی بیش از ۲۰۰۰ داوطلب.",
     credentials: ["CELTA", "آیلتس ۸.۵", "کارشناسی ارشد آموزش زبان"],
+    experience: "۱۱ سال سابقه",
   },
   {
     id: "david-clarke",
-    name: "دیوید کلارک",
+    name: "سارا محمدی",
     track: "language",
-    title: "مدرس مکالمه (Native)",
-    bio: "مدرس بومی زبان انگلیسی با تخصص در مکالمه و تلفظ، دارای گواهی TESOL و سال‌ها تجربه تدریس آنلاین.",
-    credentials: ["TESOL", "Native Speaker", "۸ سال تجربه"],
+    title: "مدرس مکالمه و کودکان",
+    bio: "مدرس مکالمه و زبان کودکان با تمرکز بر روش‌های تعاملی و بازی‌محور، دارای گواهی TESOL.",
+    credentials: ["TESOL", "روش تدریس تعاملی", "۸ سال تجربه"],
+    experience: "۸ سال سابقه",
+  },
+  {
+    id: "maryam-salehi",
+    name: "مریم صالحی",
+    track: "language",
+    title: "مدرس زبان کودکان",
+    bio: "متخصص آموزش زبان به کودکان با رویکرد داستان‌محور و آواز، دارای گواهی آموزش کودکان.",
+    credentials: ["Young Learners", "روش داستان‌محور", "۶ سال تجربه"],
+    experience: "۶ سال سابقه",
+  },
+  {
+    id: "babak-rostami",
+    name: "بابک رستمی",
+    track: "language",
+    title: "مدرس تافل و مکالمه تجاری",
+    bio: "مدرس تافل و انگلیسی تجاری با سابقه آماده‌سازی داوطلبان مهاجرت و مصاحبه‌های شغلی.",
+    credentials: ["TOEFL iBT", "Business English", "۹ سال تجربه"],
+    experience: "۹ سال سابقه",
   },
   {
     id: "reza-tabrizi",
-    name: "کاپیتان رضا تبریزی",
+    name: "کاپیتان فرهاد نوری",
     track: "pilot",
-    title: "خلبان ارشد و مدرس هوانوردی",
-    bio: "خلبان با بیش از ۱۲٬۰۰۰ ساعت پرواز و مدرس رسمی دوره‌های تئوری خلبانی و آماده‌سازی آزمون‌های استاندارد.",
-    credentials: ["ATPL", "۱۲٬۰۰۰+ ساعت پرواز", "مدرس CAA"],
+    title: "خلبان بازنشسته، تئوری پرواز",
+    bio: "خلبان بازنشسته با بیش از ۲۲ سال سابقه پرواز و مدرس رسمی دوره‌های تئوری هوانوردی.",
+    credentials: ["ATPL", "۲۲ سال سابقه پرواز", "مدرس CAA"],
+    experience: "۲۲ سال سابقه پرواز",
   },
   {
     id: "mahdi-ahmadi",
-    name: "مهندس مهدی احمدی",
+    name: "مهندس آرمان تقوی",
     track: "pilot",
-    title: "مدرس تئوری هوانوردی",
-    bio: "متخصص هواشناسی و قوانین هوانوردی با سابقه همکاری با سازمان هواپیمایی کشوری.",
-    credentials: ["کارشناسی ارشد هوافضا", "مدرس هواشناسی", "۹ سال تجربه"],
+    title: "مدرس ناوبری و مقررات",
+    bio: "متخصص ناوبری هوایی و قوانین هوانوردی با سابقه همکاری با سازمان هواپیمایی کشوری.",
+    credentials: ["کارشناسی ارشد هوافضا", "ناوبری و مقررات", "۱۴ سال تجربه"],
+    experience: "۱۴ سال سابقه",
+  },
+  {
+    id: "leila-sadeghi",
+    name: "کاپیتان لیلا صادقی",
+    track: "pilot",
+    title: "مدرس هواشناسی پرواز",
+    bio: "خلبان و مدرس هواشناسی هوانوردی با ۱۶ سال سابقه پرواز و تدریس تحلیل شرایط جوی.",
+    credentials: ["ATPL", "هواشناسی پرواز", "۱۶ سال سابقه پرواز"],
+    experience: "۱۶ سال سابقه پرواز",
+  },
+  {
+    id: "kaveh-yazdani",
+    name: "مهندس کاوه یزدانی",
+    track: "pilot",
+    title: "مدرس آیرودینامیک",
+    bio: "متخصص آیرودینامیک و اصول پروازی با سابقه تدریس در مراکز آموزش هوانوردی.",
+    credentials: ["کارشناسی ارشد هوافضا", "آیرودینامیک", "۱۰ سال تجربه"],
+    experience: "۱۰ سال سابقه",
   },
 ];
 
@@ -348,6 +389,79 @@ export function getFeaturedCourses(): Course[] {
 
 export function getCourse(slug: string): Course | undefined {
   return courses.find((c) => c.slug === slug);
+}
+
+/* ---------------- Course detail extras ---------------- */
+
+export interface Chapter {
+  title: string;
+  lessons: string[];
+}
+
+export interface Review {
+  name: string;
+  rating: number;
+  text: string;
+}
+
+/** Default curriculum + reviews per track (stand-in until per-course content exists). */
+export function getCurriculum(course: Course): Chapter[] {
+  if (course.track === "pilot") {
+    return [
+      {
+        title: "فصل ۱ — مبانی و مفاهیم پایه",
+        lessons: [
+          "جلسه ۱: معرفی دوره و اصطلاحات کلیدی",
+          "جلسه ۲: مفاهیم فیزیکی پرواز",
+          "جلسه ۳: مرور استانداردهای بین‌المللی",
+        ],
+      },
+      { title: "فصل ۲ — سیستم‌ها و تجهیزات", lessons: [] },
+      { title: "فصل ۳ — مقررات و ایمنی پروازی", lessons: [] },
+      { title: "فصل ۴ — آزمون شبیه‌سازی نهایی", lessons: [] },
+    ];
+  }
+  return [
+    {
+      title: "فصل ۱ — آشنایی با ساختار و مهارت شنیداری",
+      lessons: [
+        "جلسه ۱: معرفی چهار مهارت زبانی",
+        "جلسه ۲: استراتژی تقویت Listening",
+        "جلسه ۳: تمرین با لهجه‌های مختلف",
+      ],
+    },
+    { title: "فصل ۲ — Reading و مدیریت زمان", lessons: [] },
+    { title: "فصل ۳ — Writing و اصول نگارش", lessons: [] },
+    { title: "فصل ۴ — Speaking و آزمون شبیه‌سازی", lessons: [] },
+  ];
+}
+
+export function getReviews(course: Course): Review[] {
+  return [
+    {
+      name: course.track === "pilot" ? "آرمان رضایی" : "نگار احمدی",
+      rating: 5,
+      text:
+        course.track === "pilot"
+          ? "آزمون‌های شبیه‌سازی خیلی به آزمون واقعی نزدیک بود و اساتید باتجربه بودن."
+          : "توضیحات مدرس خیلی کاربردی بود و تونستم مهارت‌هام رو به‌خوبی جمع کنم.",
+    },
+    {
+      name: course.track === "pilot" ? "سینا مرادی" : "مهسا کریمی",
+      rating: 5,
+      text: "پشتیبانی عالی و محتوای منظم؛ دقیقاً همون چیزی که نیاز داشتم.",
+    },
+  ];
+}
+
+export function courseFeatures(course: Course): string[] {
+  const base = [
+    `${toFa(course.sessions)} جلسه · ۹۰ دقیقه‌ای`,
+    "دسترسی مادام‌العمر به ضبط کلاس‌ها",
+    "گواهی پایان دوره",
+  ];
+  if (course.hasAI) base.push("دستیار هوشمند تصحیح و بازخورد");
+  return base;
 }
 
 export function getInstructor(id: string): Instructor | undefined {
