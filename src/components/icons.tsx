@@ -1,140 +1,91 @@
 import type { SVGProps } from "react";
 
-/** Minimal geometric line-art of the mythical "Homa" bird. Stroke-only, amber eye dot. */
-export function HomaLogo({
-  size = 34,
-  stroke = "#0F2942",
-  float = false,
-  ...props
-}: { size?: number; stroke?: string; float?: boolean } & SVGProps<SVGSVGElement>) {
+/** Minimal Homa wordmark mark — a single upward stroke (growth) with an accent dot. */
+export function Logo({ className = "" }: { className?: string }) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 64 64"
-      fill="none"
-      className={float ? "animate-homaFloat" : undefined}
-      {...props}
-    >
-      <path
-        d="M32 10 C 24 18, 10 20, 4 32 C 14 30, 24 30, 30 36 C 24 40, 16 46, 14 56 C 22 50, 30 46, 32 40 C 34 46, 42 50, 50 56 C 48 46, 40 40, 34 36 C 40 30, 50 30, 60 32 C 54 20, 40 18, 32 10 Z"
-        stroke={stroke}
-        strokeWidth="2.4"
-        strokeLinejoin="round"
-        fill="none"
-      />
-      <circle cx="32" cy="24" r="2.2" fill="#D98E3B" />
-    </svg>
+    <span className={`inline-flex items-center gap-2 ${className}`}>
+      <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden>
+        <path
+          d="M5 21 L14 7 L23 21"
+          stroke="currentColor"
+          strokeWidth="2.4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <circle cx="14" cy="7" r="2.4" fill="#10B981" />
+      </svg>
+      <span className="text-[19px] font-extrabold tracking-tight">هما</span>
+    </span>
   );
 }
 
-/** The canonical AI marker: a 4-pointed amber sparkle. Reused everywhere "AI" appears. */
-export function Sparkle({
-  size = 14,
-  color = "#D98E3B",
-  pulse = false,
-  ...props
-}: { size?: number; color?: string; pulse?: boolean } & SVGProps<SVGSVGElement>) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...props}>
-      <path
-        d="M12 2l1.6 5.1L19 9l-5.4 1.9L12 16l-1.6-5.1L5 9l5.4-1.9L12 2z"
-        fill={color}
-        className={pulse ? "animate-sparklePulse" : undefined}
-      />
-    </svg>
-  );
-}
+const base = (p: SVGProps<SVGSVGElement>) => ({
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.6,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+  ...p,
+});
 
-/** Faint decorative flight-path + radar line-art behind dark heroes. */
-export function FlightPath({ opacity = 0.07 }: { opacity?: number }) {
-  return (
-    <svg
-      className="flightpath"
-      viewBox="0 0 1600 500"
-      preserveAspectRatio="none"
-      style={{ opacity }}
-      aria-hidden
-    >
-      <path
-        d="M-50,380 C 250,280 500,430 800,300 C 1100,180 1350,340 1650,220"
-        stroke="#D98E3B"
-        strokeWidth="2"
-        fill="none"
-      />
-      <circle cx="1420" cy="110" r="70" stroke="#D98E3B" strokeWidth="1" fill="none" />
-      <circle cx="1420" cy="110" r="130" stroke="#D98E3B" strokeWidth="1" fill="none" />
-      <circle cx="1420" cy="110" r="190" stroke="#D98E3B" strokeWidth="1" fill="none" />
+export const Icon = {
+  Arrow: (p: SVGProps<SVGSVGElement>) => (
+    <svg {...base(p)}>
+      <path d="M15 6l-6 6 6 6" />
     </svg>
-  );
-}
-
-/* ---- Generic line icons (1.8–2px stroke, currentColor) ---- */
-
-export function IconBook(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" {...props}>
-      <path d="M4 5h16M4 12h10M4 19h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+  ),
+  ArrowUpLeft: (p: SVGProps<SVGSVGElement>) => (
+    <svg {...base(p)}>
+      <path d="M17 17V7H7M17 7L7 17" />
     </svg>
-  );
-}
-
-export function IconPlane(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" {...props}>
-      <path
-        d="M3 12l7-2 3-8 2 1-2 7 6-1 3 3-8 2-3 8-2-1 2-7-6 1z"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-        fill="none"
-      />
+  ),
+  Check: (p: SVGProps<SVGSVGElement>) => (
+    <svg {...base(p)}>
+      <path d="M5 12.5l4.5 4.5L19 7" />
     </svg>
-  );
-}
-
-export function IconLms(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" {...props}>
-      <path d="M4 6h16M4 12h16M4 18h10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+  ),
+  Sparkle: (p: SVGProps<SVGSVGElement>) => (
+    <svg {...base(p)}>
+      <path d="M12 3v4M12 17v4M3 12h4M17 12h4M6.3 6.3l2.5 2.5M15.2 15.2l2.5 2.5M17.7 6.3l-2.5 2.5M8.8 15.2l-2.5 2.5" />
     </svg>
-  );
-}
-
-export function IconShield(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" {...props}>
-      <path
-        d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        fill="none"
-      />
+  ),
+  Play: (p: SVGProps<SVGSVGElement>) => (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...p}>
+      <path d="M8 5v14l11-7z" />
     </svg>
-  );
-}
-
-export function IconArrow({ className, ...props }: SVGProps<SVGSVGElement>) {
-  // RTL-facing arrow (points left, the "forward" direction in Farsi)
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} {...props}>
-      <path d="M15 6l-6 6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  ),
+  Bolt: (p: SVGProps<SVGSVGElement>) => (
+    <svg {...base(p)}>
+      <path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" />
     </svg>
-  );
-}
-
-export function IconCheck(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" {...props}>
-      <path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  ),
+  Target: (p: SVGProps<SVGSVGElement>) => (
+    <svg {...base(p)}>
+      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="12" r="5" />
+      <circle cx="12" cy="12" r="1.4" fill="currentColor" />
     </svg>
-  );
-}
-
-export function IconChevron(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" {...props}>
-      <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  ),
+  Chat: (p: SVGProps<SVGSVGElement>) => (
+    <svg {...base(p)}>
+      <path d="M4 5h16v11H8l-4 4V5z" />
     </svg>
-  );
-}
+  ),
+  Mic: (p: SVGProps<SVGSVGElement>) => (
+    <svg {...base(p)}>
+      <rect x="9" y="3" width="6" height="11" rx="3" />
+      <path d="M5 11a7 7 0 0014 0M12 18v3" />
+    </svg>
+  ),
+  Chart: (p: SVGProps<SVGSVGElement>) => (
+    <svg {...base(p)}>
+      <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" />
+    </svg>
+  ),
+  Star: (p: SVGProps<SVGSVGElement>) => (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...p}>
+      <path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z" />
+    </svg>
+  ),
+};

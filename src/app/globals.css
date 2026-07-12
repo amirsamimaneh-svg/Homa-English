@@ -4,7 +4,7 @@
 
 :root {
   --font-vazir: "Vazirmatn", sans-serif;
-  --font-grotesk: "Space Grotesk", sans-serif;
+  --font-inter: "Inter", sans-serif;
 }
 
 @layer base {
@@ -12,88 +12,66 @@
     -webkit-text-size-adjust: 100%;
   }
   body {
-    line-height: 1.6;
-    background: #f5f9fc;
-    color: #0f2942;
+    background: #ffffff;
+    color: #171717;
     font-family: var(--font-vazir);
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
   ::selection {
-    background: #d98e3b;
+    background: #10b981;
     color: #fff;
+  }
+  /* Latin numerals & code render in Inter for a cleaner, modern look */
+  .latin {
+    font-family: var(--font-inter);
+    font-feature-settings: "tnum" 1;
   }
 }
 
 @layer components {
-  /* Numeric / Latin content always renders in Space Grotesk */
-  .num {
-    font-family: var(--font-grotesk);
+  .wrap {
+    @apply max-w-content mx-auto px-6 sm:px-8;
   }
 
-  /* Section heading with amber start-border (used across marketing pages) */
-  .section-title {
-    @apply text-2xl font-bold border-s-4 border-amber-500 ps-3.5;
-  }
-
-  /* Buttons */
+  /* Buttons — minimal, hairline / solid ink / accent */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-btn font-semibold transition-colors cursor-pointer select-none;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-all duration-200 cursor-pointer select-none whitespace-nowrap;
   }
   .btn-primary {
-    @apply btn bg-amber-500 text-white hover:bg-amber-600 px-7 py-3.5 text-base;
+    @apply btn bg-ink-950 text-white px-6 py-3 text-[15px] hover:bg-ink-800;
   }
-  .btn-secondary {
-    @apply btn bg-navy-800 text-white hover:bg-navy-700 px-7 py-3.5 text-base;
-  }
-  .btn-outline {
-    @apply btn bg-transparent text-navy-800 border-[1.5px] border-[#C9D6E0] hover:border-navy-800 px-7 py-[13px] text-base;
+  .btn-accent {
+    @apply btn bg-accent-500 text-white px-6 py-3 text-[15px] hover:bg-accent-600;
   }
   .btn-ghost {
-    @apply btn bg-transparent text-muted hover:text-navy-800 px-5 py-3.5 text-base;
+    @apply btn text-ink-700 px-4 py-3 text-[15px] hover:text-ink-950;
+  }
+  .btn-outline {
+    @apply btn bg-white text-ink-900 border border-line px-6 py-3 text-[15px] hover:border-ink-300 hover:bg-surface;
   }
   .btn:disabled {
-    @apply bg-[#E2ECF3] text-faint cursor-not-allowed hover:bg-[#E2ECF3];
+    @apply opacity-40 cursor-not-allowed;
   }
 
-  /* Cards */
+  /* Cards — flat, hairline border, subtle hover lift */
   .card {
-    @apply bg-white rounded-card border border-line;
-  }
-  .card-dark {
-    @apply bg-navy-800 rounded-card text-white;
+    @apply bg-white border border-line rounded-xl;
   }
 
-  /* Inputs */
-  .input {
-    @apply w-full box-border px-4 py-[13px] rounded-btn border-[1.5px] border-line-200 bg-[#F9FBFC] text-[15px] outline-none focus:border-amber-500 transition-colors;
-    font-family: var(--font-vazir);
-  }
-  .input-ltr {
-    @apply input text-right;
-    direction: ltr;
-    font-family: var(--font-grotesk);
+  /* Inputs — minimal underline-lite */
+  .field {
+    @apply w-full box-border bg-white border border-line rounded-lg px-4 py-3 text-[15px] outline-none transition-colors placeholder:text-ink-400 focus:border-ink-950;
   }
 
-  /* Pills / badges */
-  .tag {
-    @apply inline-flex items-center rounded-pill px-4 py-[7px] text-[13px] font-semibold;
+  /* Eyebrow label */
+  .eyebrow {
+    @apply latin text-[12px] font-semibold tracking-[0.14em] uppercase text-accent-600;
   }
-  .tag-level {
-    @apply tag bg-navy-100 text-navy-700;
-  }
-  .tag-amber {
-    @apply tag bg-amber-100 text-amber-700;
-  }
-  .tag-success {
-    @apply tag bg-success-bg text-success-text;
-  }
-}
 
-/* Decorative flight-path SVG lives behind dark heroes; keep it non-interactive */
-.flightpath {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+  /* Pill */
+  .pill {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3 py-1 text-[13px] font-medium text-ink-700;
+  }
 }

@@ -1,214 +1,174 @@
 import Link from "next/link";
-import { Header } from "@/components/marketing/Header";
-import { Footer } from "@/components/marketing/Footer";
-import { CourseCard } from "@/components/marketing/CourseCard";
-import { FlightPath, Sparkle, IconBook, IconPlane, IconLms, IconShield } from "@/components/icons";
-import {
-  getFeaturedCourses,
-  trustStats,
-  testimonials,
-  blogPosts,
-} from "@/lib/data";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { CourseCard } from "@/components/CourseCard";
+import { Icon } from "@/components/icons";
+import { courses, stats, features, steps, testimonials } from "@/lib/data";
 
-export default function HomePage() {
-  const featured = getFeaturedCourses();
-  const posts = blogPosts.slice(0, 3);
+const featureIcon: Record<string, React.ReactNode> = {
+  target: <Icon.Target width={22} height={22} />,
+  sparkle: <Icon.Sparkle width={22} height={22} />,
+  chart: <Icon.Chart width={22} height={22} />,
+};
+
+export default function Home() {
+  const popular = courses.filter((c) => c.popular || true).slice(0, 3);
 
   return (
-    <div className="bg-page text-navy-800 min-h-screen">
-      <Header active="/" />
+    <>
+      <Header />
 
       {/* Hero */}
-      <section className="relative px-6 md:px-20 pt-20 pb-24 bg-navy-900 overflow-hidden">
-        <FlightPath opacity={0.07} />
-        <div className="relative text-center max-w-[760px] mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 bg-[rgba(217,142,59,0.14)] text-amber-500 px-[18px] py-[7px] rounded-pill text-[13px] font-bold mb-6">
-            <Sparkle size={14} pulse />
-            همراه با دستیار هوشمند یادگیری
+      <section className="wrap pt-20 pb-24 sm:pt-28 sm:pb-32">
+        <div className="max-w-3xl animate-fadeUp">
+          <div className="pill mb-7">
+            <Icon.Sparkle width={14} height={14} className="text-accent-600" />
+            یادگیری با دستیار هوشمند
           </div>
-          <h1 className="text-[34px] md:text-[46px] font-extrabold text-white leading-[1.4] mb-5">
-            مسیر خودت را انتخاب کن
+          <h1 className="text-[clamp(2.4rem,6vw,4.2rem)] font-extrabold text-ink-950 leading-[1.15] tracking-tight">
+            انگلیسی را
+            <br />
+            <span className="text-accent-600">هدفمند</span> یاد بگیر.
           </h1>
-          <p className="text-[17px] text-[#AFC3D6] leading-[1.9]">
-            آموزشگاه هما، خانه‌ی یادگیری زبان انگلیسی و آماده‌سازی خلبانی — با اساتید مجرب و سامانه
-            آموزش آنلاین اختصاصی.
+          <p className="mt-6 text-[18px] sm:text-[20px] text-ink-500 leading-8 max-w-xl">
+            هما مسیر یادگیری‌ات را بر اساس سطح و هدف تو می‌سازد — با تمرین‌های تعاملی، بازخورد هوشمند و
+            پیشرفتی که هر روز می‌بینی.
           </p>
-        </div>
-
-        <div className="relative grid grid-cols-1 md:grid-cols-2 gap-7 max-w-[1040px] mx-auto">
-          <Link
-            href="/courses/language"
-            className="bg-white rounded-[20px] p-10 flex flex-col gap-4 hover:-translate-y-1 transition-transform"
-          >
-            <div className="w-14 h-14 rounded-[14px] bg-amber-100 flex items-center justify-center text-amber-600">
-              <IconBook width={28} height={28} />
-            </div>
-            <div>
-              <div className="text-[22px] font-bold text-navy-800 mb-2">آموزش زبان انگلیسی</div>
-              <div className="text-[14.5px] text-muted leading-[1.8]">
-                عمومی، مکالمه، آیلتس/تافل و کودکان — با مسیر یادگیری گیمیفای‌شده
-              </div>
-            </div>
-            <div className="mt-auto flex items-center gap-1.5 text-amber-600 font-bold text-[14.5px]">
-              مشاهده دوره‌ها ←
-            </div>
-          </Link>
-
-          <Link
-            href="/courses/pilot"
-            className="bg-navy-700 rounded-[20px] p-10 flex flex-col gap-4 hover:-translate-y-1 transition-transform"
-          >
-            <div className="w-14 h-14 rounded-[14px] bg-[rgba(217,142,59,0.16)] flex items-center justify-center text-amber-500">
-              <IconPlane width={28} height={28} />
-            </div>
-            <div>
-              <div className="text-[22px] font-bold text-white mb-2">آموزش خلبانی</div>
-              <div className="text-[14.5px] text-[#AFC3D6] leading-[1.8]">
-                تئوری هوانوردی و آماده‌سازی کامل برای آزمون‌های خلبانی
-              </div>
-            </div>
-            <div className="mt-auto flex items-center gap-1.5 text-amber-500 font-bold text-[14.5px]">
-              مشاهده دوره‌ها ←
-            </div>
-          </Link>
+          <div className="mt-9 flex flex-wrap items-center gap-3">
+            <Link href="/start" className="btn-primary !px-7 !py-3.5 !text-base">
+              شروع رایگان
+              <Icon.Arrow width={18} height={18} />
+            </Link>
+            <Link href="/method" className="btn-outline !px-7 !py-3.5 !text-base">
+              روش هما چیست؟
+            </Link>
+          </div>
+          <p className="mt-5 text-[13.5px] text-ink-400">بدون نیاز به کارت بانکی · لغو در هر زمان</p>
         </div>
       </section>
 
-      {/* Trust bar */}
-      <section className="px-6 md:px-20 py-12 bg-white border-b border-line">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-[1100px] mx-auto text-center">
-          {trustStats.map((s) => (
-            <div key={s.label}>
-              <div className="num text-[32px] font-bold text-navy-800">{s.value}</div>
-              <div className="text-sm text-muted mt-1.5">{s.label}</div>
+      {/* Stat strip */}
+      <section className="border-y border-line bg-surface">
+        <div className="wrap grid grid-cols-2 md:grid-cols-4 divide-x divide-line rtl:divide-x-reverse">
+          {stats.map((s) => (
+            <div key={s.label} className="py-8 text-center">
+              <div className="latin text-[28px] sm:text-[32px] font-bold text-ink-950">
+                {s.value}
+                <span className="text-accent-600">{s.suffix}</span>
+              </div>
+              <div className="text-[13.5px] text-ink-500 mt-1">{s.label}</div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Featured courses */}
-      <section className="px-6 md:px-20 py-[88px] max-w-[1280px] mx-auto">
-        <div className="flex items-end justify-between mb-10">
+      {/* Features */}
+      <section className="wrap py-24">
+        <div className="max-w-xl mb-14">
+          <div className="eyebrow mb-3">چرا هما</div>
+          <h2 className="text-[clamp(1.8rem,4vw,2.6rem)] font-bold text-ink-950 tracking-tight leading-tight">
+            یادگیری‌ای که با تو جلو می‌آید
+          </h2>
+        </div>
+        <div className="grid md:grid-cols-3 gap-x-10 gap-y-12">
+          {features.map((f) => (
+            <div key={f.title}>
+              <div className="w-12 h-12 rounded-xl bg-accent-50 text-accent-600 flex items-center justify-center mb-5">
+                {featureIcon[f.icon]}
+              </div>
+              <h3 className="text-[18px] font-bold text-ink-950 mb-2">{f.title}</h3>
+              <p className="text-[15px] text-ink-500 leading-7">{f.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Courses */}
+      <section className="wrap py-24 border-t border-line">
+        <div className="flex items-end justify-between mb-12 gap-4">
           <div>
-            <div className="text-[13px] font-bold text-amber-600 mb-2">دوره‌های محبوب</div>
-            <h2 className="text-[30px] font-bold">شروع کن، همین امروز</h2>
+            <div className="eyebrow mb-3">دوره‌ها</div>
+            <h2 className="text-[clamp(1.8rem,4vw,2.6rem)] font-bold text-ink-950 tracking-tight">
+              از همین امروز شروع کن
+            </h2>
           </div>
-          <Link href="/courses/language" className="text-navy-800 font-bold text-[14.5px] hover:text-amber-600">
-            مشاهده همه دوره‌ها ←
+          <Link href="/courses" className="btn-ghost shrink-0">
+            همه دوره‌ها
+            <Icon.Arrow width={16} height={16} />
           </Link>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {featured.map((c) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {popular.map((c) => (
             <CourseCard key={c.slug} course={c} />
           ))}
         </div>
       </section>
 
-      {/* Why Homa */}
-      <section className="px-6 md:px-20 py-[88px] bg-white">
-        <div className="max-w-[1280px] mx-auto">
-          <div className="text-center max-w-[600px] mx-auto mb-14">
-            <div className="text-[13px] font-bold text-amber-600 mb-2">چرا هما</div>
-            <h2 className="text-[30px] font-bold">یادگیری، هدایت‌شده و هوشمند</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <IconLms width={26} height={26} />,
-                title: "سامانه آموزش اختصاصی",
-                text: "کلاس‌های زنده و ضبط‌شده، تکالیف، آزمون و گواهی — همه در یک پنل.",
-              },
-              {
-                icon: <Sparkle size={24} color="#BD7527" />,
-                title: "همراه هوشمند AI",
-                text: "بازخورد فوری و توضیح گرامری فارسی برای رفع اشتباهات، در تمرین‌های زبان.",
-              },
-              {
-                icon: <IconShield width={26} height={26} />,
-                title: "اساتید معتبر",
-                text: "مدرسان با گواهینامه‌های بین‌المللی زبان و خلبانی حرفه‌ای.",
-              },
-            ].map((f) => (
-              <div key={f.title} className="text-center px-5">
-                <div className="w-14 h-14 rounded-[14px] bg-amber-100 flex items-center justify-center mx-auto mb-5 text-amber-600">
-                  {f.icon}
-                </div>
-                <div className="text-[17px] font-bold mb-2.5">{f.title}</div>
-                <div className="text-[14.5px] text-muted leading-[1.85]">{f.text}</div>
-              </div>
-            ))}
-          </div>
+      {/* How it works */}
+      <section className="wrap py-24 border-t border-line">
+        <div className="max-w-xl mb-14">
+          <div className="eyebrow mb-3">مسیر تو</div>
+          <h2 className="text-[clamp(1.8rem,4vw,2.6rem)] font-bold text-ink-950 tracking-tight">
+            چهار قدم تا روان شدن
+          </h2>
         </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="px-6 md:px-20 py-[88px] max-w-[1280px] mx-auto">
-        <div className="text-center max-w-[600px] mx-auto mb-12">
-          <div className="text-[13px] font-bold text-amber-600 mb-2">تجربه دانشجویان</div>
-          <h2 className="text-[30px] font-bold">داستان‌هایی از مسیر هما</h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t) => (
-            <div key={t.name} className="bg-page rounded-card p-7">
-              <div className="text-[14.5px] text-body leading-[1.9] mb-5">«{t.quote}»</div>
-              <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-full bg-navy-100" />
-                <div>
-                  <div className="text-sm font-bold">{t.name}</div>
-                  <div className="text-xs text-muted">{t.course}</div>
-                </div>
-              </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+          {steps.map((s) => (
+            <div key={s.n} className="relative">
+              <div className="latin text-[15px] font-bold text-accent-600 mb-4">{s.n}</div>
+              <h3 className="text-[17px] font-bold text-ink-950 mb-2">{s.title}</h3>
+              <p className="text-[14.5px] text-ink-500 leading-7">{s.text}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Blog preview */}
-      <section className="px-6 md:px-20 pb-[88px] max-w-[1280px] mx-auto">
-        <div className="flex items-end justify-between mb-8">
-          <h2 className="text-[26px] font-bold">از بلاگ هما</h2>
-          <Link href="/blog" className="text-navy-800 font-bold text-[14.5px] hover:text-amber-600">
-            همه مقالات ←
-          </Link>
+      {/* Testimonials */}
+      <section className="wrap py-24 border-t border-line">
+        <div className="max-w-xl mb-14">
+          <div className="eyebrow mb-3">تجربه زبان‌آموزان</div>
+          <h2 className="text-[clamp(1.8rem,4vw,2.6rem)] font-bold text-ink-950 tracking-tight">
+            نتیجه‌ای که حس می‌شود
+          </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {posts.map((p) => (
-            <Link key={p.slug} href={`/blog`} className="card overflow-hidden block hover:-translate-y-1 transition-transform">
-              <div
-                className="h-[140px]"
-                style={{ background: "linear-gradient(135deg,#DCE8F1,#F5F9FC)" }}
-              />
-              <div className="p-5">
-                <div className="text-xs text-amber-600 font-bold mb-2">{p.category}</div>
-                <div className="text-[15px] font-bold leading-[1.7]">{p.title}</div>
+        <div className="grid md:grid-cols-3 gap-5">
+          {testimonials.map((t) => (
+            <figure key={t.name} className="card p-7 flex flex-col">
+              <div className="flex gap-0.5 text-accent-500 mb-5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Icon.Star key={i} width={15} height={15} />
+                ))}
               </div>
-            </Link>
+              <blockquote className="text-[15px] text-ink-800 leading-8 flex-1">«{t.quote}»</blockquote>
+              <figcaption className="mt-6 pt-5 border-t border-line">
+                <div className="text-[14px] font-bold text-ink-950">{t.name}</div>
+                <div className="text-[13px] text-ink-500 mt-0.5">{t.meta}</div>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="mx-6 md:mx-20 mb-[88px] bg-navy-900 rounded-[24px] p-10 md:p-16 text-center relative overflow-hidden">
-        <svg className="flightpath" viewBox="0 0 1200 300" preserveAspectRatio="none" style={{ opacity: 0.08 }} aria-hidden>
-          <path
-            d="M0,220 C 300,150 500,260 800,180 C 950,140 1050,200 1200,150"
-            stroke="#D98E3B"
-            strokeWidth="2"
-            fill="none"
-          />
-        </svg>
-        <div className="relative">
-          <h2 className="text-[28px] font-bold text-white mb-3.5">هنوز مطمئن نیستی از کجا شروع کنی؟</h2>
-          <p className="text-[15.5px] text-[#AFC3D6] mb-7">
-            یک مشاوره رایگان بگیر تا مسیر مناسب خودت را پیدا کنی.
-          </p>
-          <Link href="/contact" className="btn-primary !px-8 !py-4">
-            درخواست مشاوره رایگان
-          </Link>
+      <section className="wrap pb-24">
+        <div className="rounded-2xl bg-ink-950 text-white px-8 py-16 sm:px-16 sm:py-20 text-center relative overflow-hidden">
+          <div className="relative max-w-xl mx-auto">
+            <h2 className="text-[clamp(1.8rem,4vw,2.6rem)] font-bold tracking-tight leading-tight">
+              امروز اولین قدم را بردار
+            </h2>
+            <p className="mt-4 text-[16px] text-ink-300 leading-8">
+              آزمون تعیین سطح رایگان بده و مسیر مخصوص خودت را ببین.
+            </p>
+            <Link href="/start" className="btn-accent !px-8 !py-3.5 !text-base mt-8">
+              شروع رایگان
+              <Icon.Arrow width={18} height={18} />
+            </Link>
+          </div>
+          <div className="pointer-events-none absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-accent-500/10 blur-3xl" />
         </div>
       </section>
 
       <Footer />
-    </div>
+    </>
   );
 }

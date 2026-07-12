@@ -1,77 +1,52 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       colors: {
-        // Navy — primary/base (trust, aviation, sky)
-        navy: {
-          900: "#0A1F33",
-          800: "#0F2942",
-          700: "#16344F",
-          600: "#1F4266",
-          100: "#DCE8F1",
-          50: "#F5F9FC",
+        // Ink — near-black neutral scale (text + surfaces)
+        ink: {
+          950: "#0A0A0A",
+          900: "#171717",
+          800: "#262626",
+          700: "#404040",
+          500: "#737373",
+          400: "#A3A3A3",
+          300: "#D4D4D4",
         },
-        // Amber/Copper — secondary (CTAs, rewards, AI)
-        amber: {
-          700: "#8A5321",
-          600: "#BD7527",
-          500: "#D98E3B",
-          100: "#FBEBD4",
+        // Surfaces & hairlines
+        surface: "#FAFAFA",
+        line: "#EAEAEA",
+        // Single restrained accent — emerald (growth / learning)
+        accent: {
+          700: "#047857",
+          600: "#059669",
+          500: "#10B981",
+          100: "#D1FAE5",
+          50: "#ECFDF5",
         },
-        // Semantic
-        success: {
-          DEFAULT: "#2F9E6B",
-          bg: "#E4F5EC",
-          text: "#1F7A50",
-        },
-        error: "#D64545",
-        info: "#4FA8D8",
-        // Gamified extras
-        streak: "#FF7A45",
-        xp: "#34B37A",
-        // Text neutrals
-        body: "#3A5169",
-        muted: "#5B7286",
-        faint: "#9DAEBB",
-        // Borders
-        line: {
-          DEFAULT: "#ECF1F5",
-          200: "#DCE4EA",
-          300: "#E2E8EE",
-        },
-        page: "#F5F9FC",
       },
       fontFamily: {
-        sans: ["var(--font-vazir)", "Vazirmatn", "sans-serif"],
-        mono: ["var(--font-grotesk)", "Space Grotesk", "sans-serif"],
+        sans: ["var(--font-vazir)", "system-ui", "sans-serif"],
+        latin: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
       borderRadius: {
-        btn: "10px",
-        card: "16px",
-        pill: "100px",
+        lg: "0.75rem",
+        xl: "1rem",
+        "2xl": "1.25rem",
       },
-      lineHeight: {
-        fa: "1.6",
-        "fa-loose": "1.9",
+      maxWidth: {
+        content: "1120px",
       },
       keyframes: {
-        homaFloat: {
-          "0%,100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-6px)" },
-        },
-        sparklePulse: {
-          "0%,100%": { opacity: "0.55", transform: "scale(1)" },
-          "50%": { opacity: "1", transform: "scale(1.15)" },
+        fadeUp: {
+          "0%": { opacity: "0", transform: "translateY(12px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
       },
       animation: {
-        homaFloat: "homaFloat 5s ease-in-out infinite",
-        sparklePulse: "sparklePulse 2.4s ease-in-out infinite",
+        fadeUp: "fadeUp 0.5s cubic-bezier(0.16,1,0.3,1) both",
       },
     },
   },
